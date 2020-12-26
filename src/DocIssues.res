@@ -1,0 +1,1 @@
+let _ = SomeModule.getTestInt
