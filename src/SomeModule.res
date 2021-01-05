@@ -6,3 +6,13 @@ Note that line breaks are displayed as \n rather than as an actual line break wh
 ...break some of the markdown capabilities too.
 `)
 let getTestInt = () => 123
+
+@ocaml.text("This hover does not show up for the top level module.")
+module Nested = {
+  let x = "123"
+
+  @ocaml.doc("...and neither does this hover")
+  module NestedAgain = {
+    let y = 123
+  }
+}

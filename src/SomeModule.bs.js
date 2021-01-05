@@ -6,5 +6,15 @@ function getTestInt(param) {
   return 123;
 }
 
+var NestedAgain = {
+  y: 123
+};
+
+var Nested = {
+  x: "123",
+  NestedAgain: NestedAgain
+};
+
 exports.getTestInt = getTestInt;
+exports.Nested = Nested;
 /* No side effect */
