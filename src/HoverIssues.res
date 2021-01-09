@@ -1,5 +1,6 @@
 type owner = {name: string}
 
+@ocaml.doc("A `group` in our system.")
 type group = {
   id: string,
   name: string,
@@ -7,23 +8,17 @@ type group = {
 }
 
 type user = {
+  @ocaml.doc("The `id` of the user")
   id: string,
+  /* Testing a regular comment */
   memberOf: group,
 }
 
 @val external user: user = "user"
 @val external group: group = "group"
 
-// Hovering `user` here gives me the right info
-let _ = user
+// Hovering `id` here does not show me the doc string added in the record
+let _ = user.id
 
-// Same with `group`, the right hover is displayed
-let _ = group
-
-// However, here things start getting funky. Hovering `memberOf` gives me the same result as hovering `user`
+// Hovering `memberOf` here gives me the doc string for the `group` record, but no doc string for the annotated props of the record
 let _ = user.memberOf
-
-// And here, hovering `owner` shows the hover for `memberOf`
-let _ = user.memberOf.owner
-
-// So, it seems "nested" hovers are off by one in some way
